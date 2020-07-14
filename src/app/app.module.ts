@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes,RouterModule } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -8,6 +10,21 @@ import { CartComponent } from './components/cart/cart.component';
 import { GoodsComponent } from './components/goods/goods.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { not } from '@angular/compiler/src/output/output_ast';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
+const routes: Routes = [
+  { path:'' , component:HomeComponent },
+  { path:'login' , component:LoginComponent },
+  { path:'signup' , component:SignupComponent },
+  { path:'cart' , component:CartComponent },
+  { path:'admin' , component:GoodsComponent },
+  { path:'**' , component:NotfoundComponent },
+  // { path: '**',   redirectTo: '/', pathMatch: 'full' },
+];
+
+
 
 @NgModule({
   declarations: [
@@ -16,11 +33,14 @@ import { SignupComponent } from './components/signup/signup.component';
     CartComponent,
     GoodsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NotfoundComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
