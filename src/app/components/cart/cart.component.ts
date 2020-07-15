@@ -31,4 +31,8 @@ export class CartComponent implements OnInit {
       this.cs.Delete(this.cart[index].id)
   }
 
+  updateMount(index) {
+      this.cs.updateMount(this.cart[index].id,this.cart[index].amount)
+  }
+
 }

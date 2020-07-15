@@ -21,4 +21,10 @@ export class CartService {
     return this.fs.doc(`users/${this.as.userId}/card/${id}`).delete();
   }
 
+  updateMount(id,amount) {
+    return this.fs.doc(`users/${this.as.userId}/card/${id}`).update({
+      amount : amount
+    });
+  }
+
 }

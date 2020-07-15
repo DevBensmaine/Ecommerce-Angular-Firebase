@@ -16,7 +16,7 @@
       </td>
       <td> {{ (good.price * good.amount) | currency }} </td>
       <td>
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" (click) ="updateMount(i)">Save</button>
         <button class="btn btn-danger" (click)="delete(i)" >Delete</button>
       </td>
     </tr>
