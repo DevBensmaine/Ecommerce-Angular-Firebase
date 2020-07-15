@@ -16,4 +16,9 @@ export class CartService {
   getCart(){
     return this.fs.collection(`users/${this.as.userId}/card`).snapshotChanges()
   }
+
+  Delete(id) {
+    return this.fs.doc(`users/${this.as.userId}/card/${id}`).delete();
+  }
+
 }

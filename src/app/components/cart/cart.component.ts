@@ -25,7 +25,10 @@ export class CartComponent implements OnInit {
         console.log(this.cart)
     })
 
+  }
 
+  delete(index){
+      this.cs.Delete(this.cart[index].id)
   }
 
 }
