@@ -10,26 +10,26 @@
         <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home <span class="sr-only">(current)</span></a>
       </li>
 
-      <li class="nav-item ">
+      <li class="nav-item " *ngIf="isUser">
         <a class="nav-link" routerLink="/cart" >Cart <span class="sr-only">(current)</span></a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/admin" >Dashboard <span class="sr-only">(current)</span></a>
+      <li class="nav-item" *ngIf="isUser">
+        <a class="nav-link" routerLink="/admin" >Dashboard</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login" >Dashboard <span class="sr-only">(current)</span></a>
+      <li class="nav-item" *ngIf="!isUser">
+        <a class="nav-link" routerLink="/login" >Login</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/signup" >Signup <span class="sr-only">(current)</span></a>
+      <li class="nav-item" *ngIf="!isUser">
+        <a class="nav-link" routerLink="/signup" >Signup</a>
       </li>
 
 
     </ul>
 
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+      <button *ngIf="isUser" class="btn btn-outline-success my-2 my-sm-0" (click) = "logout()">Logout</button>
 
   </div>
 </nav>
