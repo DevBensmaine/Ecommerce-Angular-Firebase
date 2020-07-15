@@ -1,6 +1,6 @@
 <div class="body">
   <h2 class="text-center">Sign Up</h2>
-  <form  #f="ngForm" (ngSubmit)="signup(f)">
+  <form  #f="ngForm">
 
     <input ngModel  #name="ngModel" name="name"  type="text" class="form-control" placeholder="Your Name" required/>
     <div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name is required</div>
@@ -23,5 +23,7 @@
     <button class="btn btn-primary" [disabled]="f.invalid || passwordConfirm.value !== password.value" (click)="signup(f)" >Create Account</button>
 
   </form>
+
+  <div *ngIf="errorMessage !== ''" class="alert alert-danger"> {{ errorMessage }}</div>
 
 </div>
