@@ -3,6 +3,8 @@ import { Good } from '../../interfaces/good.interface';
 import { GoodsService } from '../../services/goods.service';
 import { element } from 'protractor';
 import { Subscribable, Subscription } from 'rxjs';
+import { CartService } from '../../services/cart.service';
+import { threadId } from 'worker_threads';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,8 +13,9 @@ import { Subscribable, Subscription } from 'rxjs';
 export class HomeComponent implements OnInit,OnDestroy {
   goods: Good[] = [];
   goodsObservable:Subscription
+  add: number = -1;
 
-  constructor(private gs: GoodsService) {}
+  constructor(private gs: GoodsService,private cs:CartService) {}
 
 
   ngOnInit(): void {
@@ -35,5 +38,16 @@ export class HomeComponent implements OnInit,OnDestroy {
 
   addToCard(index) {
     console.log('add - ', this.goods[index]);
+    this.add =+index;
+  }
+
+  buy(amount:number){
+    let selectedGood = this.goods[this.add];
+    let data = {
+      name : selectedGood.name,
+      amount: +amount,
+      price:selectedGood.price
+    }
+    this.cs.AddToCart(data).then(() => { this.add = -1 })
   }
 }

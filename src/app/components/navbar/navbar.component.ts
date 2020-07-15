@@ -21,7 +21,10 @@ export class NavbarComponent implements OnInit {
           this.isUser = true
           this.as.userId = user.uid
         }
-        else this.isUser = false
+        else {
+          this.isUser = false;
+          this.as.userId='';
+        }
     })
   }
 
