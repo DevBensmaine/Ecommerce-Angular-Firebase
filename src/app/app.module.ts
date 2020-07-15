@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes,RouterModule } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,8 +11,8 @@ import { GoodsComponent } from './components/goods/goods.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { not } from '@angular/compiler/src/output/output_ast';
 import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 const routes: Routes = [
   { path:'' , component:HomeComponent },
@@ -40,6 +40,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     NgbModule,
+    FormsModule ,
     RouterModule.forRoot(routes)
   ],
   providers: [],
