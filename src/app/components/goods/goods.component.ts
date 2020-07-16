@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Good } from '../../interfaces/good.interface';
+import { GoodsService } from '../../services/goods.service';
 
 @Component({
   selector: 'app-goods',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoodsComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('image') image: ElementRef
+
+  constructor(private gs:GoodsService) { }
 
   ngOnInit(): void {
+  }
+
+  addNewGood(form: NgForm){
+
+    let name =  (<Good>form.value).name,
+        price = (<Good>form.value).price,
+        image = (<HTMLInputElement>this.image.nativeElement).files[0];
+      this.gs.addNewGood(name,price,image)
+
+
   }
 
 }
