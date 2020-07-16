@@ -19,14 +19,15 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { environment } from '../environments/environment';
+import { AuthGuard } from './services/guards/auth.guard';
 
 
 const routes: Routes = [
   { path:'' , component:HomeComponent },
-  { path:'login' , component:LoginComponent },
+  { path:'login' , component:LoginComponent  },
   { path:'signup' , component:SignupComponent },
-  { path:'cart' , component:CartComponent },
-  { path:'admin' , component:GoodsComponent },
+  { path:'cart' , component:CartComponent , canActivate:[AuthGuard] },
+  { path:'admin' , component:GoodsComponent, canActivate:[AuthGuard]  },
   { path:'**' , component:NotfoundComponent },
   // { path: '**',   redirectTo: '/', pathMatch: 'full' },
 ];
