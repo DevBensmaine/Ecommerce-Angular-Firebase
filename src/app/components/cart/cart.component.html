@@ -1,24 +1,91 @@
-<table  class="table">
-  <thead>
-    <td>Name</td>
-    <td>Price</td>
-    <td>Amount</td>
-    <td>Total</td>
-    <td>Options</td>
-  </thead>
 
-  <tbody>
-    <tr *ngFor= "let good of cart; index as i">
-      <td> {{ good.name }}</td>
-      <td> {{ good.price | currency }}</td>
-      <td>
-        <input type="number" placeholder="Amount (kg)" [(ngModel)] ="good.amount">
-      </td>
-      <td> {{ (good.price * good.amount) | currency }} </td>
-      <td>
-        <button class="btn btn-primary" (click) ="updateMount(i)">Save</button>
-        <button class="btn btn-danger" (click)="delete(i)" >Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+
+  <div class="col-sm-12 col-md-12">
+    <table class="table table-hover menu-tabu">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Amount</th>
+          <th class="text-center">Subtotal</th>
+          <th>Options</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let good of cart; index as i; ">
+          <td class="col-sm-1 col-md-1">
+
+            <h4 class="media-heading">{{ good.name }}</h4>
+
+          </td>
+          <td class="col-sm-1 col-md-1"><strong> {{ good.price | currency }}</strong></td>
+
+          <td class="col-sm-1 col-md-1" style="text-align: center">
+            <input type="number" placeholder="Amount (kg)" (change)="updateAmountInTableCart()" [(ngModel)]="good.amount">
+          </td>
+
+          <td class="col-sm-1 col-md-2"><strong> {{ (good.price * good.amount) | currency }} </strong></td>
+
+
+          <td class=" text-center">
+            <button class="btn btn-success btn-sm" (click)="updateMount(i)">Save</button>
+            <button class="btn btn-danger btn-sm" (click)="delete(i)">Delete</button>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+    <hr class="my-hr">
+  </div>
+  <div class="col-sm-12 col-md-10 col-md-offset-1">
+    <div class="col-xs-12 col-md-7">
+      <h5>Apply Your Coupan Here</h5>
+      <form class="form-inline">
+        <div class="input-group">
+          <input type="text" class="form-control" [value]="somme">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="button">Confim your order</button>
+          </span>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-xs-12 col-md-5">
+      <div class="myborder-right">
+        <div class="left-meni">
+          <h5>Name</h5>
+        </div>
+        <div class="right-meni">
+          <h5>{{ user.name }}</h5>
+        </div>
+        <hr>
+        <div class="clear"></div>
+        <div class="left-meni">
+          <h5>Address Email</h5>
+        </div>
+        <div class="right-meni">
+          <h5>{{ user.address }}</h5>
+        </div>
+        <div class="clear"></div>
+        <div class="left-meni">
+          <h5>Changer l'adresse </h5>
+        </div>
+        <div class="right-meni">
+          <h5>Rs 50</h5>
+        </div>
+        <div class="clear"></div>
+        <button class="btn btn-success">Confimer your orders</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-10 col-md-offset-1">
+    <button class="btn btn-success btwa">Continue Shopping</button>
+  </div>
+
+
+
+</div>

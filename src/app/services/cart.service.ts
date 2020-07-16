@@ -26,5 +26,8 @@ export class CartService {
       amount : amount
     });
   }
+  getUserInfo(){
+    return this.fs.doc(`users/${this.as.userId}`).valueChanges()
+  }
 
 }

@@ -33,6 +33,9 @@ export class AuthService {
   logout() {
     return this.fs.signOut();
   }
+  findUser(){
+    return this.fs.currentUser
+  }
 
 
 }
